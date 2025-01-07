@@ -32,27 +32,30 @@ def account_checker_menu():
         if choice == '1':
             print(f"{GREEN}Launching Crunchyroll Premium Account Checker...{RESET}")
             time.sleep(1)
-            os.system("python crunchyroll.py")
+            os.system("python3 crunchyroll.py")
         elif choice == '2':
             print(f"{GREEN}Launching Ubisoft Account Checker...{RESET}")
             time.sleep(1)
-            os.system("python ubisoft.py")
+            os.system("python3 ubisoft.py")
         elif choice == '3':
             print(f"{GREEN}Launching Rillabox Account Checker...{RESET}")
             time.sleep(1)
-            os.system("python rillabox.py")
+            os.system("python3 rillabox.py")
         elif choice == '4':
             print(f"{GREEN}Launching Panda Account Checker...{RESET}")
             time.sleep(1)
-            os.system("python panda.py")
+            os.system("python3 panda.py")
         elif choice == '5':
             print(f"{YELLOW}Stay tuned! More tools are coming soon...{RESET}")
             time.sleep(2)
         elif choice == '6':
             print(f"{GREEN}Returning to the main menu...{RESET}")
             time.sleep(1)
-            os.system("python main.py")
+            os.system("python3 main.py")
             sys.exit()
         else:
             print(f"{RED}Invalid Option! Please try again.{RESET}")
             time.sleep(1)
+
+if __name__ == '__main__':
+    account_checker_menu()
