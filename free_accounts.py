@@ -10,20 +10,6 @@ RED = '\033[91m'
 GREEN = '\033[92m'
 RESET = '\033[0m'
 
-# Temporary lock file
-TEMP_LOCK_FILE = "temp_free_access.lock"
-
-def mark_access():
-    with open(TEMP_LOCK_FILE, "w") as file:
-        file.write("locked")
-
-def has_accessed():
-    return os.path.exists(TEMP_LOCK_FILE)
-
-def clear_access():
-    if os.path.exists(TEMP_LOCK_FILE):
-        os.remove(TEMP_LOCK_FILE)
-
 def get_free_account(service_name):
     try:
         with open(f"{service_name}_accounts.txt", "r") as file:
@@ -40,15 +26,6 @@ def get_free_account(service_name):
         return None
 
 def free_accounts():
-    if has_accessed():
-        print(f"{RED}\nYou have already accessed free accounts in this session. Returning to the main menu...{RESET}")
-        time.sleep(2)
-        clear_access()  # Unlock access after returning to main.py
-        os.system("python main.py")  # Redirect back to main.py
-        sys.exit()
-
-    mark_access()  # Lock access for this session
-
     while True:
         os.system('clear')
         print(f"""
@@ -80,9 +57,8 @@ def free_accounts():
             get_free_account('callofduty')
         elif choice == '6':
             print(f"{GREEN}Returning to the main menu...{RESET}")
-            clear_access()  # Unlock access after normal exit
             time.sleep(1)
-            os.system("python main.py")  # Redirect back to main.py
+            os.system("python main.py")  # Redirect to main.py
             sys.exit()
         else:
             print(f"{RED}Invalid Option! Try again.{RESET}")
